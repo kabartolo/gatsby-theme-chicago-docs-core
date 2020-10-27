@@ -2,9 +2,9 @@
 
 > For full documentation and a demonstration of this theme, see the <a href="https://kabartolo.github.io/chicago-docs-demo/">Chicago Docs Demo</a>.
 
-The <a href="https://kabartolo.github.io/chicago-docs-demo/">Chicago Docs theme</a> for <a href="https://gatsbyjs.com">Gatsby</a> is a modern, professional docs site designed for open source projects. 
+> This guide is for the **core** version of this theme.
 
-This guide gets you set up quickly if you're already familiar with Gatsby. It assumes you have Gatsby installed. If you're not familiar with Gatsby, see their <a href="https://www.gatsbyjs.com/docs/quick-start/">Quick Start</a> or <a href="https://www.gatsbyjs.com/tutorial/">Tutorial</a>.
+The <a href="https://kabartolo.github.io/chicago-docs-demo/">Chicago Docs theme</a> for <a href="https://gatsbyjs.com">Gatsby</a> is a modern, professional docs site designed for open source projects. 
 
 ## Table of Contents
 
@@ -47,9 +47,9 @@ npm install @kabartolo/gatsby-theme-chicago-docs-core
 
 ## Quick Config
 
-The default configuration of `@kabartolo/gatsby-starter-chicago-docs` creates a site that looks and behaves like the <a href="https://kabartolo.github.io/chicago-docs-demo/">demo</a>. You'll just need to customize your site details in the `gatsby-config.js` file for your site. This creates the site metadata and configures the manifest file using <a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/">`gatsby-plugin-manifest`</a>. It also adds a logo and favicon.
+Customize your site details in the `gatsby-config.js` file for your site. This creates the site metadata and configures the manifest file using <a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/">`gatsby-plugin-manifest`</a>. It also adds a favicon.
 
-See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/">Configuration</a> for a more in-depth guide on configuring your site.
+See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/">Configuration</a> for a more in-depth guide on configuring your site (note that `githubUrl` and `siteLogo` in the main theme are not used by the core theme).
 
 ### Metadata
 
@@ -60,9 +60,7 @@ This table gives the name of each metadata field, its type, whether it is option
 | `title` | string | optional |  `''` (empty string) | Used to set the meta title tag for your site. Also appears in the browser tab and next to the logo in the header. |
 | `description` | string | optional | `''` (empty string) | Used to set the meta description tag for your site. |
 | `siteLanguage` | string | optional | `''` (empty string) | Used to set the meta language tag for your site. |
-| `siteLogo` | string | optional | `''` (empty string) |  Filename for your logo, which should live in `src/assets` (or the `assetsPath` <a href="#theme-options">theme option</a>). This creates a logo that appears to the left of the site title with a fixed height of 30px. To customize the logo further, <a href="https://kabartolo.github.io/chicago-docs-demo/docs/styling-and-shadowing/#component-example">shadow</a> the Logo component in `@kabartolo/gatsby-theme-chicago-docs/src/components/Layout/Header/logo.js`. |
 | `siteUrl` | string | optional | `''` (empty string) |  Used to set the canonical URL for your site. |
-| `githubUrl` | string | optional | `''` (empty string) | Used to create a GitHub icon in the header that opens your GitHub project in a new tab. |
 
 ### Example
 
@@ -72,9 +70,7 @@ module.exports = {
     title: 'The Full Title of Your Project',
     description: 'A brief description of your project and/or the site',
     siteLanguage: 'en',
-    siteLogo: 'logo.png', // adds the logo to the site
     siteUrl: 'https://www.your-site.com',
-    githubUrl: `https://www.github.com/repository/project-name/`,
   },
   plugins: [
     '@kabartolo/gatsby-theme-chicago-docs',
@@ -175,17 +171,17 @@ module.exports = {
 
 ```
 
-If you specify `isGroup: true` for a list item, the item will appear as an accordion of posts from  `src/docs/{slug}` (see <a href="#theme-options">theme options</a> to change where your docs live). 
-
 If you omit the `items` list, all posts from the directory will be added automatically.
 
 ## Theme Options
 
-Several options are available to customize your site's directory structure and how the site behaves. See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/site-options/#theme-options">Configuration: Theme Options</a> for more details.
+Several options are available to customize your site's directory structure and how the site behaves. See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/site-options/#theme-options">Configuration: Theme Options</a> for more details. Note that there are more options for `@kabartolo/gatsby-theme-chicago-docs`.
 
 ### Options
 
 This table gives the name of each theme option, its type, whether it is optional or required, the default value, and a description.
+
+For each doc, its corresponding breadcrumb links, sidebar menu, and post-navigation links (to previous and next docs) are stored in the `pageContext` prop.
 
 | Name | Type | Info | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -200,12 +196,7 @@ This table gives the name of each theme option, its type, whether it is optional
 | `alwaysShowPostNav` | boolean | optional | `true` | Whether to always show links to the previous and next docs at the bottom of a doc page. Can be overridden by the <a href="#frontmatter">`showPostNav`</a> frontmatter field for an individual doc. |
 | `alwaysShowSidebar` | boolean | optional | `true` | Whether to always show the sidebar for docs. Can be overridden by the <a href="#frontmatter">`showSidebar`</a> frontmatter field for an individual doc. |
 | `alwaysShowTOC` | boolean | optional | `true` | Whether to always show the table of contents (TOC component) for each doc. Can be overridden by the <a href="#frontmatter">`showTOC`</a> frontmatter field for an individual doc. |
-| `primaryResultsOnly` | boolean | optional | `false` | When searching, whether to show only only matches in the title, description, and/or header. If set to `false`, will also show paragraph matches. |
-| `sidebarAllowMultipleOpen` | boolean | optional | `true` | Whether multiple accordion menus in the sidebar can be open at the same time. |
-| `sidebarAllowTOC` | boolean | optional | `true` | Whether to show a dropdown table of contents for each doc in the sidebar. |
-| `sidebarDepth` | number | optional | `3` | Total depth of nested accordions to display in the sidebar (including table of contents). |
 | `skipMDXConfig` | boolean | optional | `false` | Whether to skip `gatsby-plugin-mdx` configuration for the theme. |
-| `toggleTheme` | boolean | optional | `true` | Whether a theme toggle button should be shown in the header. |
 
 ### Example
 
@@ -220,17 +211,12 @@ module.exports = {
         assetsPath: 'src/assets',
         basePath: '/',
         docsPath: 'src/docs',
-        sidebarDepth: 3,
         allowDocsSearch: true,
         alwaysShowBreadcrumb: true,
         alwaysShowPostNav: true,
         alwaysShowSidebar: true,
         alwaysShowTOC: true,
-        primaryResultsOnly: false,
-        sidebarAllowMultipleOpen: true,
-        sidebarAllowTOC: true,
         skipMDXConfig: false,
-        toggleTheme: true,
       }
     }
   ]
@@ -240,9 +226,50 @@ module.exports = {
 
 ## Creating Docs
 
-Docs are MDX files that are displayed using the Doc page component. Docs can be navigated in the sidebar. A doc includes breadcrumb links at the top of the doc page; these are based on the nesting of the post in the <a href="https://kabartolo.github.io/chicago-docs-demo/docs/menus/#sidebar-menu">sidebar menu</a> defined by you. The links to the previous and next docs at the bottom of the doc page are also determined by this sidebar menu.
+Docs are MDX files that are displayed using the Doc page component. The <a href="https://kabartolo.github.io/chicago-docs-demo/docs/menus/#sidebar-menu">sidebar menu</a> helps define each doc's breadcrumb links and post navigation (links to previous and next docs). These are stored in the doc's `pageContext` prop:
 
-A table of contents (using the TOC component) also appears for each doc.
+```js {6}
+// src/components/Doc/index.js
+
+import React from 'react';
+import PropTypes from 'prop-types';
+
+export default function Doc({ data, pageContext }) {
+  return (
+    <div>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <pre>{JSON.stringify(pageContext, null, 2)}</pre>
+    </div>
+  );
+}
+
+Doc.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+  pageContext: PropTypes.instanceOf(Object).isRequired,
+};
+```
+
+This `pageContext` prop has the following shape:
+
+```js
+pageContext: {
+  id, // node id
+  menu: {
+
+  },
+  breadcrumb: {
+
+  },
+  previous: {
+    path,
+    label,
+  },
+  next:{
+    path,
+    label,
+  },
+}
+````
 
 You can customize how all docs appear using the appropriate <a href="#theme-options">theme option</a>, such as `alwaysShowTOC` (this option determines whether all docs show a table of contents). You can customize an individual doc using the corresponding <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/site-options/#frontmatter">frontmatter field</a>, such as `showTOC`.
 

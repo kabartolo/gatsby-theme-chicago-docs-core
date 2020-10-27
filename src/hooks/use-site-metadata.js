@@ -8,7 +8,6 @@ function useSiteMetadata() {
           title
           description
           siteUrl
-          siteLogo
           siteLanguage
         }
       }
