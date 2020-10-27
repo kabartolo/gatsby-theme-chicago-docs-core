@@ -346,12 +346,24 @@ exports.onCreateNode = ({
   }
 };
 
-exports.onCreateWebpackConfig = ({ getConfig }) => {
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   const config = getConfig();
+
   config.node = {
       fs: 'empty',
   };
-}
+
+  if (stage === 'build-javascript') {
+    const miniCssExtractPlugin = config.plugins.find(
+      (plugin) => plugin.constructor.name === 'MiniCssExtractPlugin'
+    );
+
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true;
+    }
+    actions.replaceWebpackConfig(config);
+  }
+};
 
 exports.createPages = async ({ graphql, actions }, themeOptions) => {
   const { createPage } = actions;
