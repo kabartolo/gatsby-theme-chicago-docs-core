@@ -226,7 +226,7 @@ module.exports = {
 
 ## Creating Docs
 
-Docs are MDX files that are displayed using the Doc page component. The <a href="https://kabartolo.github.io/chicago-docs-demo/docs/menus/#sidebar-menu">sidebar menu</a> helps define each doc's breadcrumb links and post navigation (links to previous and next docs). These are stored in the doc's `pageContext` prop:
+Docs are MDX files that are displayed using the Doc page component. The <a href="https://kabartolo.github.io/chicago-docs-demo/docs/menus/#sidebar-menu">sidebar menu</a> helps define each doc's breadcrumb links and post navigation (links to previous and next docs). These are stored along with the sidebar menu in the doc's `pageContext` prop, which you can access from the Doc page component:
 
 ```js {6}
 // src/components/Doc/index.js
@@ -248,28 +248,6 @@ Doc.propTypes = {
   pageContext: PropTypes.instanceOf(Object).isRequired,
 };
 ```
-
-This `pageContext` prop has the following shape:
-
-```js
-pageContext: {
-  id, // node id
-  menu: {
-
-  },
-  breadcrumb: {
-
-  },
-  previous: {
-    path,
-    label,
-  },
-  next:{
-    path,
-    label,
-  },
-}
-````
 
 You can customize how all docs appear using the appropriate <a href="#theme-options">theme option</a>, such as `alwaysShowTOC` (this option determines whether all docs show a table of contents). You can customize an individual doc using the corresponding <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/site-options/#frontmatter">frontmatter field</a>, such as `showTOC`.
 
