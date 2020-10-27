@@ -89,7 +89,7 @@ This example shows how the main menu and sidebar menus are defined for the <a hr
 module.exports = {
   plugins: [
     {
-      resolve: '@kabartolo/gatsby-theme-chicago-docs',
+      resolve: '@kabartolo/gatsby-theme-chicago-docs-core',
       options: {
          mainMenu: [
           {
@@ -166,11 +166,11 @@ This table gives the name of each theme option, its type, whether it is optional
 | `alwaysShowPostNav` | boolean | optional | `true` | Used as default value for the <a href="#frontmatter">`showPostNav`</a> frontmatter field for an individual doc. |
 | `alwaysShowSidebar` | boolean | optional | `true` | Used as default value for the <a href="#frontmatter">`showSidebar`</a> frontmatter field for an individual doc. |
 | `alwaysShowTOC` | boolean | optional | `true` | Used as default value for the <a href="#frontmatter">`showTOC`</a> frontmatter field for an individual doc. |
-| `skipMDXConfig` | boolean | optional | `false` | Whether to skip `gatsby-plugin-mdx` configuration for the theme. |
+| `skipMDXConfig` | boolean | optional | `false` | Whether to skip <a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/">`gatsby-plugin-mdx`</a> configuration for the theme. |
 
 ### Example
 
-This example shows the theme options (except menus) and their default values:
+This example shows the theme options (except <a href="#menus">menus</a>) and their default values:
 
 ```js
 module.exports = {
@@ -228,13 +228,13 @@ See <a href="/docs/configuration/site-options/#frontmatter">Configuration: Front
 
 | Name | Type | Info | Default | Description |
 | --- | --- | --- | --- | --- |
-| `title` | string | optional | value of `shortTitle` or 'Untitled' | Title of the doc. Used in the meta title tag and appears at the top of the doc and in the browser tab. |
+| `title` | string | optional | value of `shortTitle` or 'Untitled' | Title of the doc. Used in the meta title tag and appears in the browser tab. |
 | `shortTitle` | string | optional | `''` (empty string) | Shorter title used in place of the `title` field in doc navigation (e.g., in the sidebar). |
 | `description` | string | optional | `''` (empty string) | Description of the doc. Used in the search index and in the meta description tag for the page. |
-| `showBreadcrumb` | boolean | optional | value of `alwaysShowBreadcrumb` | Whether the breadcrumb links appear at the top of this doc. |
-| `showPostNav` | boolean | optional | value of `alwaysShowPostNav` | Whether links to the previous and next docs appear at the bottom of this doc. |
-| `showSidebar` | boolean | optional | value of `alwaysShowSidebar` | Whether the sidebar should appear for this doc. |
-| `showTOC` | boolean | optional | value of `alwaysShowTOC` | Whether the standalone table of contents (the TOC component) should appear for this doc. |
+| `showBreadcrumb` | boolean | optional | value of `alwaysShowBreadcrumb` | Can be used to determine whether the breadcrumb links should appear at the top of this doc. |
+| `showPostNav` | boolean | optional | value of `alwaysShowPostNav` | Can be used to determine whether links to the previous and next docs should appear at the bottom of this doc. |
+| `showSidebar` | boolean | optional | value of `alwaysShowSidebar` | Can be used to determine whether the sidebar should appear for this doc. |
+| `showTOC` | boolean | optional | value of `alwaysShowTOC` | Can be used to determine whether the standalone table of contents (the TOC component) should appear for this doc. |
 
 ### Example
 
@@ -262,7 +262,7 @@ See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/si
 
 Other pages can be created using React, regular JavaScript, or MDX. An MDX file in `src/mdxPages` (or the `pagesPath` <a href="#theme-options">theme option</a>) will be rendered using the Page component, which does **not** include layout features such as a sidebar menu or breadcrumb links.
 
-To create a non-doc page, create an MDX file in your specified `pagesPath` directory:
+To create a non-doc MDX page, create an MDX file in your specified `pagesPath` directory:
 
 ```js
 ---
@@ -272,8 +272,5 @@ description: Brief description of the page (used in metadata)
 
 ## The first header should be an h2
 
-Use Chicago Docs components here.
-
-<TOC />
 
 ```
