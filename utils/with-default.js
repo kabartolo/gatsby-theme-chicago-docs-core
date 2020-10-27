@@ -1,3 +1,4 @@
+/* Includes options from `@kabartolo/gatsby-theme-chicago-docs` */
 module.exports = (options) => {
   const defaultBoolean = (value, defaultValue) => {
     if (typeof value === 'undefined') {

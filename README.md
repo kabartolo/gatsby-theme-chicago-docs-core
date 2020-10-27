@@ -240,7 +240,7 @@ See <a href="/docs/configuration/site-options/#frontmatter">Configuration: Front
 
 To create a doc, create an MDX file in `src/docs` (or the `docsPath` defined in the <a href="#theme-options">theme options</a>):
 
-```js
+```
 ---
 title: Title for your doc
 shortTitle: Alternate (shorter) title used in navigation
@@ -264,7 +264,7 @@ Other pages can be created using React, regular JavaScript, or MDX. An MDX file 
 
 To create a non-doc MDX page, create an MDX file in your specified `pagesPath` directory:
 
-```js
+```
 ---
 title: Title for your page
 description: Brief description of the page (used in metadata)
