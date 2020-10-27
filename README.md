@@ -1,6 +1,6 @@
 # Gatsby Theme Chicago Docs (Core)
 
-> For full documentation and a demonstration of this theme, see the <a href="https://kabartolo.github.io/chicago-docs-demo/">Chicago Docs Demo</a>.
+> For full documentation and a demonstration of `@kabartolo/gatsby-theme-chicago-docs`, see the <a href="https://kabartolo.github.io/chicago-docs-demo/">Chicago Docs Demo</a>.
 
 > This guide is for the **core** version of this theme.
 
@@ -19,13 +19,7 @@ The <a href="https://kabartolo.github.io/chicago-docs-demo/">Chicago Docs theme<
 
 ### Start a new site
 
-To install the **starter** and create a **new site**, run:
-
-```
-gatsby new your-site-name @kabartolo/gatsby-starter-chicago-docs
-```
-
-If you just want the data without the components or styling, use the **core starter** to start a docs site from scratch:
+To install the **core starter** to start a docs site from scratch:
 
 ```
 gatsby new your-site-name @kabartolo/gatsby-starter-chicago-docs-core
@@ -33,13 +27,7 @@ gatsby new your-site-name @kabartolo/gatsby-starter-chicago-docs-core
 
 ### Add to an existing site
 
-To install just the **theme** to an **existing site**, run:
-
-```
-npm install @kabartolo/gatsby-theme-chicago-docs
-```
-
-To install just the **core theme** so you can style your docs from scratch, run:
+To install the **core theme** so you can style your docs from scratch, run:
 
 ```
 npm install @kabartolo/gatsby-theme-chicago-docs-core
@@ -57,7 +45,7 @@ This table gives the name of each metadata field, its type, whether it is option
 
 | Name | Type | Info | Default | Description |
 | --- | --- | --- | --- | --- |
-| `title` | string | optional |  `''` (empty string) | Used to set the meta title tag for your site. Also appears in the browser tab and next to the logo in the header. |
+| `title` | string | optional |  `''` (empty string) | Used to set the meta title tag for your site. Also appears in the browser tab. |
 | `description` | string | optional | `''` (empty string) | Used to set the meta description tag for your site. |
 | `siteLanguage` | string | optional | `''` (empty string) | Used to set the meta language tag for your site. |
 | `siteUrl` | string | optional | `''` (empty string) |  Used to set the canonical URL for your site. |
@@ -73,7 +61,7 @@ module.exports = {
     siteUrl: 'https://www.your-site.com',
   },
   plugins: [
-    '@kabartolo/gatsby-theme-chicago-docs',
+    '@kabartolo/gatsby-theme-chicago-docs-core',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -95,7 +83,7 @@ module.exports = {
 
 The main menu and the sidebar menus are defined in your site's `gatsby-config.js` file. For more information on creating these menus, see <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/menus">Configuration: Menus</a>.
 
-This example shows how the main menu and sidebar menus are defined for the <a href="https://kabartolo.github.io/chicago-docs-demo/">demo</a> site:
+This example shows how the main menu and sidebar menus are defined for the <a href="https://kabartolo.github.io/chicago-docs-demo/">demo</a> site. Note that if you omit the `items` list, all posts from the directory will be added automatically.
 
 ```js {6,16}num
 module.exports = {
@@ -137,21 +125,7 @@ module.exports = {
                   },
                 ],
               },
-              {
-                slug: 'mdx-guide',
-              },
-              {
-                slug: 'styling-and-shadowing',
-              },              
-              {
-                slug: 'components-and-hooks',
-              },
-              {
-                slug: 'errors',
-              },
-              {
-                slug: 'example-api-doc',
-              },              
+              // code omitted for brevity            
             ],
           },
           {
@@ -171,17 +145,13 @@ module.exports = {
 
 ```
 
-If you omit the `items` list, all posts from the directory will be added automatically.
-
 ## Theme Options
 
-Several options are available to customize your site's directory structure and how the site behaves. See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/site-options/#theme-options">Configuration: Theme Options</a> for more details. Note that there are more options for `@kabartolo/gatsby-theme-chicago-docs`.
+Several options are available to customize your site's directory structure and how the site behaves. See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/site-options/#theme-options">Configuration: Theme Options</a> for more details. Note that `@kabartolo/gatsby-theme-chicago-docs` defines more options than the core theme. The core theme uses the options listed below.
 
 ### Options
 
-This table gives the name of each theme option, its type, whether it is optional or required, the default value, and a description.
-
-For each doc, its corresponding breadcrumb links, sidebar menu, and post-navigation links (to previous and next docs) are stored in the `pageContext` prop.
+This table gives the name of each theme option, its type, whether it is optional or required, the default value, and a description. These options (except `sidebarMenus`) can be fetched using the <a href="https://kabartolo.github.io/chicago-docs-demo/docs/components-and-hooks/#hooks">`useThemeOptions` hook</a>.
 
 | Name | Type | Info | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -189,18 +159,18 @@ For each doc, its corresponding breadcrumb links, sidebar menu, and post-navigat
 | `basePath` | string | optional | `''` (empty string) | Base path of your docs site, such as `/docs`. |
 | `docsPath` | string | optional | `src/docs` |  Directory for all MDX docs for your site (i.e., MDX files that should use the Doc page component). |
 | `pagesPath` | string | optional | `'src/mdxPages'` |  Directory for your site's pages (i.e., MDX files that should use the Page page component). |
-| `mainMenu` | array of objects | optional | `[]` | List of menu items that will appear in the header (see <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/menus/#main-menu">Configuration: Main Menu</a>). |
-| `sidebarMenus` | array of objects | optional | `[]` | List of menus that will appear in the sidebar of your site (see <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/menus/#sidebar-menu">Configuration: Sidebar Menu</a>). |
-| `allowDocsSearch` | boolean | optional | `true` |  Whether a search index is populated with MDX files from the `docsPath` folder and whether a searchbar appears in the header. |
-| `alwaysShowBreadcrumb` | boolean | optional | `true` | Whether breadcrumb links are always displayed at the top of each doc. Can be overridden by the <a href="#frontmatter">`showBreadcrumb`</a> frontmatter field for an individual doc.|
-| `alwaysShowPostNav` | boolean | optional | `true` | Whether to always show links to the previous and next docs at the bottom of a doc page. Can be overridden by the <a href="#frontmatter">`showPostNav`</a> frontmatter field for an individual doc. |
-| `alwaysShowSidebar` | boolean | optional | `true` | Whether to always show the sidebar for docs. Can be overridden by the <a href="#frontmatter">`showSidebar`</a> frontmatter field for an individual doc. |
-| `alwaysShowTOC` | boolean | optional | `true` | Whether to always show the table of contents (TOC component) for each doc. Can be overridden by the <a href="#frontmatter">`showTOC`</a> frontmatter field for an individual doc. |
+| `mainMenu` | array of objects | optional | `[]` | List of main menu items (see <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/menus/#main-menu">Configuration: Main Menu</a>). |
+| `sidebarMenus` | array of objects | optional | `[]` | List of sidebar menus (the sidebar menu associated with a doc is stored in the doc's `pageContext` prop; also see <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/menus/#sidebar-menu">Configuration: Sidebar Menu</a>). |
+| `allowDocsSearch` | boolean | optional | `true` |  Whether a search index is fully populated with MDX files from the `docsPath` folder. Set to `false` to use a different search strategy. |
+| `alwaysShowBreadcrumb` | boolean | optional | `true` | Used as default value for the <a href="#frontmatter">`showBreadcrumb`</a> frontmatter field for an individual doc.|
+| `alwaysShowPostNav` | boolean | optional | `true` | Used as default value for the <a href="#frontmatter">`showPostNav`</a> frontmatter field for an individual doc. |
+| `alwaysShowSidebar` | boolean | optional | `true` | Used as default value for the <a href="#frontmatter">`showSidebar`</a> frontmatter field for an individual doc. |
+| `alwaysShowTOC` | boolean | optional | `true` | Used as default value for the <a href="#frontmatter">`showTOC`</a> frontmatter field for an individual doc. |
 | `skipMDXConfig` | boolean | optional | `false` | Whether to skip `gatsby-plugin-mdx` configuration for the theme. |
 
 ### Example
 
-This example shows the theme options and their default values:
+This example shows the theme options (except menus) and their default values:
 
 ```js
 module.exports = {
@@ -211,6 +181,7 @@ module.exports = {
         assetsPath: 'src/assets',
         basePath: '/',
         docsPath: 'src/docs',
+        pagesPath: 'src/mdxPages',
         allowDocsSearch: true,
         alwaysShowBreadcrumb: true,
         alwaysShowPostNav: true,
@@ -249,8 +220,6 @@ Doc.propTypes = {
 };
 ```
 
-You can customize how all docs appear using the appropriate <a href="#theme-options">theme option</a>, such as `alwaysShowTOC` (this option determines whether all docs show a table of contents). You can customize an individual doc using the corresponding <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/site-options/#frontmatter">frontmatter field</a>, such as `showTOC`.
-
 ### Frontmatter fields
 
 This table gives the name of each frontmatter field, its type, whether it is optional or required, the default value, and a description.
@@ -276,9 +245,7 @@ To create a doc, create an MDX file in `src/docs` (or the `docsPath` defined in 
 title: Title for your doc
 shortTitle: Alternate (shorter) title used in navigation
 description: Brief description of the doc (used in metadata and search index)
-showBreadcrumb: true
 showPostNav: false
-showSidebar: true
 showTOC: false
 ---
 
@@ -291,17 +258,11 @@ This post will not show previous/next navigation or a table of contents since
 
 See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/configuration/site-options/#frontmatter">Configuration: Frontmatter</a> for details on the available frontmatter fields. See <a href="https://kabartolo.github.io/chicago-docs-demo/docs/mdx-guide">Guide to MDX</a> for help writing MDX and Markdown.
 
-</TwoColumnSection>
-
-<TwoColumnSection>
-
 ## Creating Pages
 
-Pages can be created using React, regular JavaScript, or MDX. An MDX file in `src/mdxPages` (or the `pagesPath` <a href="#theme-options">theme option</a>) will be rendered using the Page component. This component provides all <a href="https://kabartolo.github.io/chicago-docs-demo/docs/components-and-hooks/#chicago-docs-components">Chicago Docs components</a> but does **not** include layout features such as a sidebar or breadcrumb links.
+Other pages can be created using React, regular JavaScript, or MDX. An MDX file in `src/mdxPages` (or the `pagesPath` <a href="#theme-options">theme option</a>) will be rendered using the Page component, which does **not** include layout features such as a sidebar menu or breadcrumb links.
 
 To create a non-doc page, create an MDX file in your specified `pagesPath` directory:
-
-<CodeExample title="src/mdxPages/example-doc.mdx" labels={['MDX']}>
 
 ```js
 ---
@@ -316,7 +277,3 @@ Use Chicago Docs components here.
 <TOC />
 
 ```
-
-</CodeExample> 
-
-</TwoColumnSection>
