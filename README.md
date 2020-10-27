@@ -6,6 +6,15 @@ The <a href="https://kabartolo.github.io/chicago-docs-demo/">Chicago Docs theme<
 
 This guide gets you set up quickly if you're already familiar with Gatsby. It assumes you have Gatsby installed. If you're not familiar with Gatsby, see their <a href="https://www.gatsbyjs.com/docs/quick-start/">Quick Start</a> or <a href="https://www.gatsbyjs.com/tutorial/">Tutorial</a>.
 
+## Table of Contents
+
+* [Installation](#installation)
+* [Quick Config](#quick-config)
+* [Menus](#menus)
+* [Theme Options](#theme-options)
+* [Creating Docs](#creating-docs)
+* [Creating Pages](#creating-pages)
+
 ## Installation
 
 ### Start a new site
