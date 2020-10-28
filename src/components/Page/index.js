@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Page({ data }, pageContext) {
+export default function Page({ data, pageContext }) {
   return (
     <div>
       <pre>{JSON.stringify(data, null, 2)}</pre>
