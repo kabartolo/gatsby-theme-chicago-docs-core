@@ -58,7 +58,7 @@ exports.sourceNodes = ({
   createTypes([
     schema.buildObjectType({
       interfaces: ['Node'],
-      name: 'Page',
+      name: 'ChicagoDocsPage',
       fields: {
         id: 'ID!',
         title: 'String',
@@ -256,7 +256,7 @@ exports.onCreateNode = ({
     ) {
       const path = createFilePath({ node, getNode });
       const slug = parent.name;
-      const id = createNodeId(`${node.id} >>> Page`);
+      const id = createNodeId(`${node.id} >>> ChicagoDocsPage`);
 
       const pageData = {
         title: node.frontmatter.title,
@@ -271,10 +271,10 @@ exports.onCreateNode = ({
         parent: node.id,
         children: [],
         internal: {
-          type: 'Page',
+          type: 'ChicagoDocsPage',
           contentDigest: createContentDigest(pageData),
           content: JSON.stringify(pageData),
-          description: 'Page from @kabartolo/gatsby-theme-chicago-docs',
+          description: 'MDX page from @kabartolo/gatsby-theme-chicago-docs',
         },
       });
 
@@ -371,7 +371,7 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
 
   const pageQuery = await graphql(`
     query {
-      allPage {
+      allChicagoDocsPage {
         edges {
           node {
             id
@@ -414,7 +414,7 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
   }
 
   const docs = docsQuery.data.allDoc.edges;
-  const pages = pageQuery.data.allPage.edges;
+  const pages = pageQuery.data.allChicagoDocsPage.edges;
 
  /*** Create pages ***/
   pages.forEach(({ node }) => {

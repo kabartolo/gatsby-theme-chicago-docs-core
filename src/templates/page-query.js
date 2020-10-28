@@ -5,7 +5,7 @@ export default Page;
 
 export const pageQuery = graphql`
   query ($id: String) {
-    page(id: { eq: $id }) {
+    chicagoDocsPage(id: { eq: $id }) {
       id
       body
       slug
