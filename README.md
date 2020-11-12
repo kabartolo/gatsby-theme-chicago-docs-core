@@ -22,7 +22,7 @@ The <a href="https://kabartolo.github.io/chicago-docs-demo/">Chicago Docs theme<
 To install the <a href="https://github.com/kabartolo/gatsby-starter-chicago-docs-core">**core starter**</a> to start a docs site from scratch:
 
 ```
-gatsby new your-site-name @kabartolo/gatsby-starter-chicago-docs-core
+gatsby new your-site-name https://github.com/kabartolo/gatsby-starter-chicago-docs-core
 ```
 
 ### Add to an existing site
