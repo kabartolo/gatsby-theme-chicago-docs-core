@@ -8,6 +8,7 @@ function useThemeOptions() {
         nodes {
           assetsPath
           basePath
+          basePathLabel
           docsPath
           mainMenu {
             name

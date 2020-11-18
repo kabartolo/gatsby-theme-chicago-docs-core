@@ -39,6 +39,7 @@ exports.sourceNodes = ({
   const {
     assetsPath,
     basePath,
+    basePathLabel,
     docsPath,
     pagesPath,
     mainMenu,
@@ -93,6 +94,7 @@ exports.sourceNodes = ({
       fields: {
         assetsPath: 'String',
         basePath: 'String',
+        basePathLabel: 'String',
         docsPath: 'String',
         pagesPath: 'String',
         mainMenu: ['Menu'],
@@ -193,6 +195,7 @@ exports.sourceNodes = ({
   const config = {
     assetsPath,
     basePath,
+    basePathLabel,
     docsPath,
     pagesPath,
     mainMenu,
@@ -455,6 +458,7 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
           node.id,
           node.slug,
           node.shortTitle || node.title,
+          node.title,
           node.path,
         );
       }

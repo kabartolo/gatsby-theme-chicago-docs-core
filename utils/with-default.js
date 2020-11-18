@@ -10,6 +10,7 @@ module.exports = (options) => {
 
   const assetsPath = options.assetsPath || 'src/assets';
   const basePath = options.basePath || '/';
+  const basePathLabel = options.basePathLabel || 'Home';
   const docsPath = options.docsPath || 'src/docs';
   const pagesPath = options.pagesPath || 'src/mdxPages';
   const mainMenu = options.mainMenu || [];
@@ -29,6 +30,7 @@ module.exports = (options) => {
   return {
     assetsPath,
     basePath,
+    basePathLabel,
     docsPath,
     pagesPath,
     mainMenu,

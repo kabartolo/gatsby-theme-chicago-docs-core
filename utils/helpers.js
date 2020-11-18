@@ -244,6 +244,7 @@ function appendToMenu(
   postId,
   postSlug,
   postName,
+  postTitle,
   postPath,
 ) {
   const newItems = deepCopy(sidebarItems);
@@ -259,6 +260,7 @@ function appendToMenu(
     post.id = postId;
     post.slug = postSlug;
     post.name = post.name || postName;
+    post.title = postTitle;
     post.path = postPath;
   }
 
